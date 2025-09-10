@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sonnet4Style-GPT Config",
+  "type": "object",
+  "properties": {
+    "model": {
+      "type": "object",
+      "required": [
+        "vocab_size",
+        "max_seq_len",
+        "n_layers",
+        "n_heads",
+        "d_model",
+        "d_ff",
+        "dropout"
+      ],
+      "properties": {
+        "vocab_size": {
+          "type": "integer",
+          "minimum": 258
+        },
+        "max_seq_len": {
+          "type": "integer",
+          "minimum": 8
+        },
+        "n_layers": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "n_heads": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "d_model": {
+          "type": "integer",
+          "minimum": 32
+        },
+        "d_ff": {
+          "type": "integer",
+          "minimum": 64
+        },
+        "dropout": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "tokenizer": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "byte"
+          ]
+        },
+        "bos_token_id": {
+          "type": "integer"
+        },
+        "eos_token_id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type",
+        "bos_token_id",
+        "eos_token_id"
+      ]
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "dataset_path": {
+          "type": "string"
+        },
+        "num_workers": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "dataset_path"
+      ]
+    },
+    "training": {
+      "type": "object",
+      "properties": {
+        "batch_size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "micro_batch_size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_steps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "eval_interval": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "batch_size",
+        "micro_batch_size",
+        "max_steps",
+        "eval_interval",
+        "seed",
+        "device"
+      ]
+    },
+    "optimizer": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "adamw"
+          ]
+        },
+        "lr": {
+          "type": "number",
+          "minimum": 1e-06
+        },
+        "betas": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "weight_decay": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "type",
+        "lr",
+        "betas",
+        "weight_decay"
+      ]
+    },
+    "scheduler": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "cosine",
+            "none"
+          ]
+        },
+        "warmup_steps": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "type",
+        "warmup_steps"
+      ]
+    },
+    "generate": {
+      "type": "object",
+      "properties": {
+        "max_new_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "temperature": {
+          "type": "number",
+          "minimum": 0
+        },
+        "top_k": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "top_p": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "repetition_penalty": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "max_new_tokens",
+        "temperature",
+        "top_k",
+        "top_p",
+        "repetition_penalty"
+      ]
+    }
+  },
+  "required": [
+    "model",
+    "tokenizer",
+    "data",
+    "training",
+    "optimizer",
+    "scheduler",
+    "generate"
+  ]
+}
