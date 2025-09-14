@@ -60,7 +60,8 @@ python -c "import torch; print(torch.__version__, torch.cuda.is_available(), tor
 
 ```powershell
 # From repo root (or from inside sonnet4style-gpt folder)
-python -m sonnet_gpt.cli --config .\sonnet4style-gpt\sonnet4style-gpt\configs\tiny.json train
+python -m sonnet_gpt.cli --config ./sonnet4style-gpt/sonnet4style-gpt/configs/tiny.json train
+
 
 # If you installed editable package and are inside package folder:
 cd .\sonnet4style-gpt\sonnet4style-gpt
@@ -72,7 +73,7 @@ python -m sonnet_gpt.cli --config .\configs\tiny.json train
 8) Generate text from a saved checkpoint
 
 ```powershell
-python -m sonnet_gpt.cli --config .\sonnet4style-gpt\sonnet4style-gpt\configs\tiny.json generate --prompt "To be, or not to be" --ckpt_dir .\checkpoints
+python -m sonnet_gpt.cli --config ./configs/tiny.json generate --prompt "To be, or not to be" --ckpt_dir .\checkpoints
 ```
 
 9) Deactivate venv and re-enter later
