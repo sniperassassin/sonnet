@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# VS Code
+.vscode/
+
+# Checkpoints and logs
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+logs/
+
+# Byte-compiled / distribution
+build/
+dist/
+*.egg-info/
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Ignore pip cache
+pip-log.txt
+.pip-wheel-metadata/
+
+# Ignore requirements lock file if user-specific
+requirements-locked.txt
